@@ -1,6 +1,6 @@
-let list = [5,4,5,4,5,4,4,5,3,3,3,2,2,1,5]
+let list = [3,3,3,4,4,4,4,5,5,5,8,5,4,6,6,6,6,7,6,7,6]
 
-let n = 5
+let n = 1
 nth_most_rate(list,n)
 
 function nth_most_rate(list,n){
@@ -20,23 +20,35 @@ function nth_most_rate(list,n){
 
 
 
-    // getting the object keys
-    const key = Object.keys(counts)
+    // getting the object values
+    const value = Object.values(counts)
 
 
-    const res = key.find(curr=> curr == n)
+    const res = value.find(curr=> curr == n)
+
+    console.log(res)
 
 
     const names = {...counts}
 
-    key.forEach(function(item){
-        if(item == res){
-            console.log(names[n])
-        }else{
-            console.log("Undefined")
-        }
-    })
-    
+    function getKey(names, res){
+        console.log(Object.keys(names).find(key =>names[key] === res))
+    }   
+
+    getKey(names,res)
   
 }
 
+
+
+// function nth_most_rate(list,n){
+//     let index = list.indexOf(n);
+//     let newList = []
+//     for(i = index; i < list.length; i++){
+//         newList.push(list[i])
+//     }
+//     newList = newList.splice(1,1)
+//     return newList[0]
+// }
+// let nearest_value = nth_most_rate(list,n)
+// console.log(`The nearest value to ${n} is :(${nearest_value})`)
