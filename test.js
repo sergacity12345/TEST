@@ -41,14 +41,3 @@ function nth_most_rate(list,n){
 
 
 
-// function nth_most_rate(list,n){
-//     let index = list.indexOf(n);
-//     let newList = []
-//     for(i = index; i < list.length; i++){
-//         newList.push(list[i])
-//     }
-//     newList = newList.splice(1,1)
-//     return newList[0]
-// }
-// let nearest_value = nth_most_rate(list,n)
-// console.log(`The nearest value to ${n} is :(${nearest_value})`)
