@@ -1,8 +1,10 @@
-let list = [3,3,3,4,4,4,4,5,5,5,8,5,4,6,6,6,6,7,6,7,6]
 
-let n = 1
-nth_most_rate(list,n)
 
+
+let list = [3,3,3,4,4,4,4,5,5,5,5,4,6,6,6,6,7,6,7,6,3,3,3,4,4,4,4,5,5,5,5,4,6,6,6,6,7,6,7,6,3,3,3,4,4,4,4,5,5,5,5,4,6,6,6,6,7,6,7,6]
+
+let n = 2
+console.log('sorted',nth_most_rate(list,n))
 function nth_most_rate(list,n){
 
     // arrange the arrays in number of occurence 
@@ -16,28 +18,29 @@ function nth_most_rate(list,n){
             counts[list[i]] =1
         }
     }
+
     console.log(counts)
 
+    // sort the data with frequency
+    let theSorted = []
+    function permute(obj){
+        let theKeys = Object.keys(obj)
+        console.log(theKeys)
+        if(theKeys.length === 0) return false
+        let least1 = theKeys[0]
+        for(let key in obj){
+            if(counts[key] < counts[least1]){
+                least1 = parseInt(key)
+            }
+        }
+        theSorted.push(parseInt(least1))
+        delete obj[least1.toString()]
+        return permute(obj)
+    }
+    permute(counts)
 
+    // console.log(theSorted)
 
-    // getting the object values
-    const value = Object.values(counts)
-
-
-    const res = value.find(curr=> curr == n)
-
-    console.log(res)
-
-
-    const names = {...counts}
-
-    function getKey(names, res){
-        console.log(Object.keys(names).find(key =>names[key] === res))
-    }   
-
-    getKey(names,res)
+    return theSorted[n -1]
   
 }
-
-
-
